@@ -10,32 +10,33 @@ class TeleSender():
 
     def post_project_event(self, json_obj):
         obj = json_obj
-        event_type = obj['object_kind']
-        if event_type == 'push':
-            self.__revice_push(obj)
-        if event_type == 'merge_request':
-            self.__revice_merge_request(obj)
+        # event_type = obj['object_kind']
+        # if event_type == 'push':
+        self.__revice_push(obj)
+        # if event_type == 'merge_request':
+        #     self.__revice_merge_request(obj)
 
     def __revice_push(self, json_obj):
         msg = self.__parse_push_event(json_obj)
-        self.bot.send_message(self.chat_id, msg, parse_mode='Markdown')
+        self.bot.send_message(self.chat_id, msg) #, parse_mode='Markdown')
 
     def __parse_push_event(self, json_obj):
-        push_user = json_obj['user_name']
-        commit_count = json_obj['total_commits_count']
-        repo_url = json_obj['repository']['homepage']
-        repo_name = json_obj['repository']['name']
+        push_user = json_obj['pusher']['name']
+	# commit_count = json_obj['total_commits_count']
+        # repo_url = json_obj['repository']['homepage']
+        repo_name = json_obj['repository']['full_name']
         commits = json_obj['commits']
+	# dt = json_obj['repository']['pushed_at']
 
-        if commit_count == 1:
-            msg = '*%s pushed 1 commit ' % push_user
-        else:
-            msg = '*%s pushed %d commits ' % (push_user, commit_count)
+        # if commit_count == 1:
+        msg = '*%s pushed 1 commit ' % push_user
+        # else:
+        #    msg = '*%s pushed %d commits ' % (push_user, commit_count)
 
-        if commit_count > 3:
-            msg += 'to %s (showing last 3):*\n' % repo_name
-        else:
-            msg += 'to %s:*\n' % repo_name
+        # if commit_count > 3:
+        #    msg += 'to %s (showing last 3):*\n' % repo_name
+        # else:
+        msg += 'to %s:*\n' % repo_name
 
         for commit in commits[-3:]:
             dt = dateutil.parser.parse(commit['timestamp']).replace(tzinfo=None)
