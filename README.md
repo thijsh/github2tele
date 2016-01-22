@@ -1,5 +1,5 @@
-# gitlab2tele
-Gitlab webhook integrate with the Telegram
+# github2tele
+Github webhook integrate with the Telegram
 
 ## Install requirements
 
@@ -18,4 +18,4 @@ $ python runserver.py
 
 Get bot token : [https://core.telegram.org/bots](https://core.telegram.org/bots)
 
-* Set webhook in gitlab. http://your.ip:port/gitlab/project
+* Set webhook in Github. http://your.ip:port/gitlab/project
