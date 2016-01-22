@@ -18,7 +18,7 @@ class TeleSender():
 
     def __revice_push(self, json_obj):
         msg = self.__parse_push_event(json_obj)
-        self.bot.send_message(self.chat_id, msg) #, parse_mode='Markdown')
+        self.bot.send_message(self.chat_id, msg, parse_mode="Markdown")
 
     def __parse_push_event(self, json_obj):
         push_user = json_obj['pusher']['name']
