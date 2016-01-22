@@ -19,3 +19,5 @@ $ python runserver.py
 Get bot token : [https://core.telegram.org/bots](https://core.telegram.org/bots)
 
 * Set webhook in Github. http://your.ip:port/gitlab/project
+
+This is a simple test version that is not yet properly modified to receive Github webhook callbacks!
