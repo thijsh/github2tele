@@ -4,7 +4,7 @@ Github webhook integrate with the Telegram
 ## Install requirements
 
 ```
-$ pip install -r requirements.txt
+$ pip install -r requirements.txt --upgrade
 ```
 
 ## Set environment variable and run
